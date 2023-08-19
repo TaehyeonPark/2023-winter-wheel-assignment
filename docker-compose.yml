@@ -23,8 +23,6 @@ services:
     container_name: taxi-client
     build:
       dockerfile: ./client/Dockerfile
-    ports:
-      - "3000:80"
     volumes:
       - ./client:/usr/src/app
     environment:
@@ -37,8 +35,6 @@ services:
     container_name: taxi-server
     build:
       dockerfile: ./server/Dockerfile
-    ports:
-      - "3001:80"
     volumes:
       - ./server:/usr/src/app
     environment:
@@ -61,3 +57,4 @@ services:
       - ./server/src/db:/data/db:rw
     networks:
       - taxi-network
+  
