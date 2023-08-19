@@ -54,7 +54,7 @@ services:
     image: mongo:4.4
     restart: always
     volumes:
-      - ./server/src/db:/data/db:rw
+      - ./mongo.conf:/data/db:rw
     networks:
       - taxi-network
   
