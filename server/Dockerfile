@@ -4,7 +4,8 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN apk update && apk add curl
-RUN npm install -g
+RUN npm install cross-env -g
+RUN npm install
 # RUN npm ci
 
 EXPOSE 80
