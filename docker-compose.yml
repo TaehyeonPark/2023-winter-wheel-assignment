@@ -22,8 +22,7 @@ services:
 
   client:
     container_name: taxi-client
-    build:
-      dockerfile: ./client/Dockerfile
+    build: ./client
     volumes:
       - ./client:/usr/src/app
     environment:
@@ -34,8 +33,7 @@ services:
 
   server:
     container_name: taxi-server
-    build:
-      dockerfile: ./server/Dockerfile
+    build: ./server
     volumes:
       - ./server:/usr/src/app
     environment:
