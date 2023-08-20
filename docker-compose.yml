@@ -26,8 +26,8 @@ services:
     volumes:
       - ./client:/usr/src/app
     environment:
-      - REACT_APP_BACK_URL=${REACT_APP_BACK_URL}
-      - REACT_APP_S3_URL=${REACT_APP_S3_URL}
+      - REACT_APP_BACK_URL=${{ secrets.REACT_APP_BACK_URL }}
+      - REACT_APP_S3_URL=${{ secrets.REACT_APP_S3_URL }}
     networks:
       - taxi-network
 
