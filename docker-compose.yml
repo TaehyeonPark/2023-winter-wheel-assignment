@@ -26,8 +26,8 @@ services:
     volumes:
       - ./client:/usr/src/app
     environment:
-      - REACT_APP_BACK_URL=${{ secrets.REACT_APP_BACK_URL }}
-      - REACT_APP_S3_URL=${{ secrets.REACT_APP_S3_URL }}
+      - REACT_APP_BACK_URL=${REACT_APP_BACK_URL}
+      - REACT_APP_S3_URL=${REACT_APP_S3_URL}
     networks:
       - taxi-network
 
@@ -37,13 +37,13 @@ services:
     volumes:
       - ./server:/usr/src/app
     environment:
-      - SESSION_KEY=${{ secrets.SESSION_KEY }}
-      - SPARCSSSO_CLIENT_ID=${{ secrets.SPARCSSSO_CLIENT_ID }}
-      - SPARCSSSO_CLIENT_KEY=${{ secrets.SPARCSSSO_CLIENT_KEY }}
+      - SESSION_KEY=${SESSION_KEY}
+      - SPARCSSSO_CLIENT_ID=${SPARCSSSO_CLIENT_ID}
+      - SPARCSSSO_CLIENT_KEY=${SPARCSSSO_CLIENT_KEY}
       - FRONT_URL=${FRONT_URL}
-      - AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-      - AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - AWS_S3_BUCKET_NAME=${{ secrets.AWS_S3_BUCKET_NAME }}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}  
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}
       - DB_PATH=${DB_PATH}
     networks:
       - taxi-network
