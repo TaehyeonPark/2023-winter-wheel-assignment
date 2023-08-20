@@ -23,8 +23,6 @@ services:
   client:
     container_name: taxi-client
     build: ./client
-    volumes:
-      - ./client:/usr/src/app
     environment:
       - REACT_APP_BACK_URL=${REACT_APP_BACK_URL}
       - REACT_APP_S3_URL=${REACT_APP_S3_URL}
@@ -34,8 +32,6 @@ services:
   server:
     container_name: taxi-server
     build: ./server
-    volumes:
-      - ./server:/usr/src/app
     environment:
       - SESSION_KEY=${SESSION_KEY}
       - SPARCSSSO_CLIENT_ID=${SPARCSSSO_CLIENT_ID}
@@ -52,8 +48,6 @@ services:
     container_name: taxi-db
     image: mongo:4.4
     restart: always
-    volumes:
-      - ./mongo.conf:/data/db:rw
     networks:
       - taxi-network
     
