@@ -82,5 +82,6 @@ jobs:
                     timeout: 120s
                     script: |
                         cd 2023-winter-wheel-assignment
+                        sudo docker compose down
                         git pull origin main
                         sudo docker compose up -d
