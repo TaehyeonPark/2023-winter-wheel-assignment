@@ -47,7 +47,7 @@ jobs:
                 with:
                     context: ./client
                     push: true
-                    tags: ${{ github.repository }}:client - ${{ github.sha }}
+                    tags: ${{ steps.meta.outputs.tags }}
                     labels: ${{ steps.meta.outputs.labels }}
             
             -
@@ -56,7 +56,7 @@ jobs:
                 with:
                     context: ./server
                     push: true
-                    tags: ${{ github.repository }}:server - ${{ github.sha }}
+                    tags: ${{ steps.meta.outputs.tags }}
                     labels: ${{ steps.meta.outputs.labels }}
         
     deploy-to:
