@@ -47,7 +47,7 @@ jobs:
                 with:
                     context: ./client
                     push: true
-                    tags: ${{ steps.meta.outputs.tags }}
+                    tags: ${{ github.repository }}:client - ${{ github.sha }}
                     labels: ${{ steps.meta.outputs.labels }}
             
             -
@@ -56,19 +56,32 @@ jobs:
                 with:
                     context: ./server
                     push: true
-                    tags: ${{ steps.meta.outputs.tags }}
+                    tags: ${{ github.repository }}:server - ${{ github.sha }}
                     labels: ${{ steps.meta.outputs.labels }}
         
-    # deploy-to:
-    #     name: Deploy to
+    deploy-to:
+        name: Deploy to
 
-    #     runs-on: ubuntu-latest
+        runs-on: ubuntu-latest
         
-    #     needs: build-and-push-image
+        needs: build-and-push-image
 
-    #     permissions:
-    #         contents: read
-    #         packages: write
+        permissions:
+            contents: read
+            packages: write
         
-    #     steps:
-            
+        steps:
+            -
+                name: SSH Remote Commands
+                uses: appleboy/ssh-action@master
+                with:
+                    host: ${{ secrets.HOST }}
+                    username: ${{ secrets.USERNAME }}
+                    key: ${{ secrets.KEY }}
+                    port: ${{ secrets.PORT }}
+                    timeout: 120s
+                    script: |
+                        cd /home/rocky/workspace/2023-winter-wheel-assignment
+                        docker-compose down
+                        git pull origin main
+                        docker-compose up -d
