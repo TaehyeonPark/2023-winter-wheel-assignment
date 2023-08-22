@@ -16,6 +16,7 @@ services:
       - ./nginx/sites-available:/etc/nginx/sites-available:ro
       - ./nginx/sites-enabled:/etc/nginx/sites-enabled:ro
       - ./nginx/logs:/var/log/nginx
+      - ./nginx/certs:/etc/nginx/certs
       - /etc/letsencrypt/live/taxi.taehyeon.me/fullchain.pem:/etc/letsencrypt/live/taxi.taehyeon.me/fullchain.pem
       - /etc/letsencrypt/live/taxi.taehyeon.me/privkey.pem:/etc/letsencrypt/live/taxi.taehyeon.me/privkey.pem
     depends_on:
