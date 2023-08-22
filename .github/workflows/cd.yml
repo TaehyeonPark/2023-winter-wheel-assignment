@@ -83,4 +83,4 @@ jobs:
                     script: |
                         cd 2023-winter-wheel-assignment
                         git pull origin main
-                        docker compose up -d
+                        sudo docker compose up -d
