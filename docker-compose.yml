@@ -56,4 +56,5 @@ services:
     networks:
       - taxi-network
     volumes:
-      - ./mongo:/data/db
+      - ./mongod.conf:/etc/mongod.conf
+      - ./log:/var/log/mongodb
