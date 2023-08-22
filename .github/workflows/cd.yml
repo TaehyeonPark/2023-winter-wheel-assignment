@@ -81,11 +81,8 @@ jobs:
                     port: ${{ secrets.PORT }}
                     timeout: 120s
                     script: |
-                        cd ~/2023-winter-wheel-assignment
-                        docker compose down
-                        cd ..
-                        rm -rf 2023-winter-wheel-assignment
+                        mkdir -p /usr/local/src
+                        cd /usr/local/src
                         git clone https://github.com/TaehyeonPark/2023-winter-wheel-assignment.git
                         cd 2023-winter-wheel-assignment
                         docker compose up -d
-                        
