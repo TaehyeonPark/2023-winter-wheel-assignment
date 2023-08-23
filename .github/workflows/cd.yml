@@ -12,7 +12,6 @@ env:
     REGISTRY: ghcr.io
     IMAGE_NAME: ${{ github.repository }}
 
-# Build and push Docker images
 jobs:
     build-and-push-image:
         runs-on: ubuntu-latest
